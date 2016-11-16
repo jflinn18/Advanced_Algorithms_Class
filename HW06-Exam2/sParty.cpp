@@ -13,6 +13,9 @@ vector<vector<int> > dp;
 
 vector<int> ans; // This will need to be a pair later when we actually want the right answer
 
+
+// There is a vector subscript out of range error. I think that it occurs in here. 
+// Maybe play with VS or another debugger to see exactly where and what is going on.
 int knapsack(int items, int capacity){
 	int value;
 	if(dp[items][capacity] < 0){
