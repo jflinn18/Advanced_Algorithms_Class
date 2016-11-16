@@ -1,20 +1,22 @@
 #include <iostream>
 #include <algorithm>
+#include <vector>
 
 using namespace std;
 
 
-long long farida_rec(int mNum, long long FN1, long long FN2, long long m) {
+//long long farida_rec(int mNum, long long FN1, long long FN2, long long m) {
+long long farida_rec(int mNum, long long FN1, long long FN2){
 	long long coin;
 	cin >> coin;
-	//if (mNum == 0) return 0;
-	//if (mNum == 1) return coin;
-	//if (mNum == 1) return max(FN1, FN2);
-
-	long long temp = max(FN2, FN1 + coin);
+	
+	long long temp = max(FN2+coin, FN1);
+	//long long temp = max(FN2, FN1 + coin);
+	if (mNum == 0) return 0;
 	if (mNum == 1) return temp;
-	//return farida_rec(mNum - 1, FN2 + coin, FN1);
-	return farida_rec(mNum-1, FN2, FN1+coin, temp);   //Doesn't work either. It just returns that value at the bottom of the recursion
+	
+	return farida_rec(mNum-1, temp, FN1);
+	//return farida_rec(mNum-1, FN2, FN1+coin, temp);   //Doesn't work either. It just returns that value at the bottom of the recursion
 }
 
 
@@ -30,12 +32,17 @@ int main() {
 	int num_monsters;
 	int temp;
 	cin >> num_cases;
+	vector<long long> ans;
 
 	for (int i = 0; i < num_cases; i++) {
 		cin >> num_monsters;
-		//cin >> temp;
-		cout << "Case " << i + 1 << ": " << farida_rec(num_monsters, 0, 0, 0) << endl;
+		//cout << "Case " << i + 1 << ": " << farida_rec(num_monsters, 0, 0) << endl;
+		ans.push_back(farida_rec(num_monsters, 0,0));
 	}
+	
+	for (int i = 0; i < num_cases; i++)
+		cout << "Case " << i + 1 << ": " << ans[i] << endl;
+		
 
 	/*
 	--- This is to test Fib_tail. Fib_tail works---
