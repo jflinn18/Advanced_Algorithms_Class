@@ -8,14 +8,14 @@ using namespace std;
 vector<int> values;   // happiness of the party
 vector<int> weights;  // cost of the party
 
-vector<vector<int>> dp;
+vector<vector<int> > dp;
 
 vector<int> ans; // This will need to be a pair later when we actually want the right answer
 
 int knapsack(int items, int capacity){
 	int value;
 	if(dp[items][capacity] < 0){
-		if (j < weights[items])
+		if (capacity < weights[items])
 			value = knapsack(items-1, capacity);
 		else{
 			value = max(knapsack(items-1, capacity), values[items] + knapsack(items-1, capacity-weights[items]));
@@ -27,7 +27,7 @@ int knapsack(int items, int capacity){
 
 
 int main(){
-
+	std::string temp_string = "";
 	while(true){
 		int budget = 0;
 		int num_parties = 0;
@@ -47,7 +47,7 @@ int main(){
 		
 		ans.push_back(knapsack(num_parties, budget));
 		
-		getline(cin, temp); // Eats the endline
+		getline(cin, temp_string); // Eats the endline
 		
 		cin.clear(); // Clears the buffer
 		cin.ignore();
@@ -60,6 +60,8 @@ int main(){
 			i.clear();
 	}
 	
+	for (auto i : ans)
+		cout << i << endl;
 	
 
 }
