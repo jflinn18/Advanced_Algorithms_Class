@@ -2,6 +2,7 @@
 #include <vector>
 #include <utility>
 #include <algorithm>
+#include <string>
 
 using namespace std;
 
@@ -28,6 +29,7 @@ int knapsack(int items, int capacity){
 
 int main(){
 	std::string temp_string = "";
+	
 	while(true){
 		int budget = 0;
 		int num_parties = 0;
@@ -46,6 +48,7 @@ int main(){
 		}
 		
 		ans.push_back(knapsack(num_parties, budget));
+		
 		
 		getline(cin, temp_string); // Eats the endline
 		
