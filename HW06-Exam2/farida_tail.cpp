@@ -15,7 +15,6 @@ long long farida_rec(int mNum, long long FN1, long long FN2){
 	long long temp = max(FN2+coin, FN1);
 
 	
-	
 	return farida_rec(mNum-1, temp, FN1);
 }
 
